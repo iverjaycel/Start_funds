@@ -49,6 +49,7 @@ contract Decentragram {
 
     // Add Image to the contract
     images[imageCount] = Image(imageCount, _imgHash, _description, 0, msg.sender);
+    
     // Trigger an event
     emit ImageCreated(imageCount, _imgHash, _description, 0, msg.sender);
   }
