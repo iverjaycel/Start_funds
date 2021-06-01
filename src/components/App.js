@@ -32,9 +32,11 @@ class App extends Component {
 
   async loadBlockchainData() {
     const web3 = window.web3
+    
     // Load account
     const accounts = await web3.eth.getAccounts()
     this.setState({ account: accounts[0] })
+    
     // Network ID
     const networkId = await web3.eth.net.getId()
     const networkData = StartFunds.networks[networkId]
@@ -44,6 +46,7 @@ class App extends Component {
       this.setState({ StartFunds })
       const imagesCount = await StartFunds.methods.imageCount().call()
       this.setState({ imagesCount })
+      
       // Load images
       for (var i = 1; i <= imagesCount; i++) {
         const image = await StartFunds.methods.images(i).call()
@@ -51,6 +54,7 @@ class App extends Component {
           images: [...this.state.images, image]
         })
       }
+      
       // Sort images. Show highest tipped images first
       this.setState({
         images: this.state.images.sort((a,b) => b.tipAmount - a.tipAmount )
