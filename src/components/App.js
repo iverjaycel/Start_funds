@@ -47,6 +47,7 @@ class App extends Component {
       const imagesCount = await StartFunds.methods.imageCount().call()
       this.setState({ imagesCount })
       
+      
       // Load images
       for (var i = 1; i <= imagesCount; i++) {
         const image = await StartFunds.methods.images(i).call()
@@ -55,7 +56,8 @@ class App extends Component {
         })
       }
       
-      // Sort images. Show highest tipped images first
+     
+      // Sort images. Show highest funded images first
       this.setState({
         images: this.state.images.sort((a,b) => b.tipAmount - a.tipAmount )
       })
