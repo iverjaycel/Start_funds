@@ -42,7 +42,7 @@ class App extends Component {
     const networkData = StartFunds.networks[networkId]
    
     if(networkData) {
-      const decentragram = new web3.eth.Contract(StartFunds.abi, networkData.address)
+      const startfunds = new web3.eth.Contract(StartFunds.abi, networkData.address)
       this.setState({ StartFunds })
       const imagesCount = await StartFunds.methods.imageCount().call()
       this.setState({ imagesCount })
